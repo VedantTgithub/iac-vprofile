@@ -35,7 +35,9 @@ jobs:
 
       - name: Setup Terraform with specified version on the runner
         uses: hashicorp/setup-terraform@v4
-        
+        with:
+          terraform_version: 1.9.7
+
       - name: Check Terraform version
         run: terraform version
 
@@ -59,6 +61,3 @@ jobs:
       - name: Terraform plan status
         if: steps.plan.outcome == 'failure'
         run: exit 1
-      
-      - name: Display Terraform Version Constraint
-        run: cat terraform.tf  
